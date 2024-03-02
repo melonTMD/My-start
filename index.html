@@ -66,29 +66,34 @@
             window.open(url);
         }
 
-        function search() {
-            // 获取搜索框中的内容
-            var searchContent = document.getElementById('urlInput').value;
-            // 获取选定的搜索引擎
-            var searchEngine = document.getElementById('searchEngine').value;
-            
-            // 检查内容是否为空
-            if (searchContent.trim() !== '') {
-                // 根据选择的搜索引擎构建搜索链接
-                var searchUrl;
-                if (searchEngine === 'bing') {
-                    searchUrl = 'https://www.bing.com/search?q=' + encodeURIComponent(searchContent);
-                } else if (searchEngine === 'google') {
-                    searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(searchContent);
-                } else if (searchEngine === 'baidu') {
-                    searchUrl = 'https://www.baidu.com/s?wd=' + encodeURIComponent(searchContent);
-                } else
-                // 在新窗口中打开搜索链接
-                window.open(searchUrl);
-            } else {
-                alert('请输入搜索内容！');
-            }
+function search() {
+    // 获取搜索框中的内容
+    var searchContent = document.getElementById('urlInput').value;
+    // 获取选定的搜索引擎
+    var searchEngine = document.getElementById('searchEngine').value;
+
+    // 检查内容是否为空
+    if (searchContent.trim() !== '') {
+        // 根据选择的搜索引擎构建搜索链接
+        var searchUrl;
+        if (searchEngine === 'bing') {
+            searchUrl = 'https://www.bing.com/search?q=' + encodeURIComponent(searchContent);
+        } else if (searchEngine === 'google') {
+            searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(searchContent);
+        } else if (searchEngine === 'baidu') {
+            searchUrl = 'https://www.baidu.com/s?wd=' + encodeURIComponent(searchContent);
+        } else {
+            alert('请选择搜索引擎！');
+            return;
         }
+
+        // 在当前窗口中导航到搜索链接
+        window.location.href = searchUrl;
+    } else {
+        alert('请输入搜索内容！');
+    }
+}
+
     </script>
 </head>
 <body>
