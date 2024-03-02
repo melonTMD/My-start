@@ -46,11 +46,6 @@
             background-color: #444461; /* 深红色背景 */
         }
 
-                /* 鼠标悬停时的样式 */
-                #searchEngine:hover {
-            background-color: #444461; /* 深红色背景 */
-        }
-
         /* 输入框样式 */
         #urlInput {
             padding: 10px; /* 输入框内边距 */
@@ -62,38 +57,37 @@
     </style>
     <script>
         function openlink(url) {
-            // 在新窗口中打开指定链接
-            window.open(url);
+            // 在当前窗口中打开指定链接
+            window.location.href = url;
         }
 
-function search() {
-    // 获取搜索框中的内容
-    var searchContent = document.getElementById('urlInput').value;
-    // 获取选定的搜索引擎
-    var searchEngine = document.getElementById('searchEngine').value;
+        function search() {
+            // 获取搜索框中的内容
+            var searchContent = document.getElementById('urlInput').value;
+            // 获取选定的搜索引擎
+            var searchEngine = document.getElementById('searchEngine').value;
 
-    // 检查内容是否为空
-    if (searchContent.trim() !== '') {
-        // 根据选择的搜索引擎构建搜索链接
-        var searchUrl;
-        if (searchEngine === 'bing') {
-            searchUrl = 'https://www.bing.com/search?q=' + encodeURIComponent(searchContent);
-        } else if (searchEngine === 'google') {
-            searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(searchContent);
-        } else if (searchEngine === 'baidu') {
-            searchUrl = 'https://www.baidu.com/s?wd=' + encodeURIComponent(searchContent);
-        } else {
-            alert('请选择搜索引擎！');
-            return;
+            // 检查内容是否为空
+            if (searchContent.trim() !== '') {
+                // 根据选择的搜索引擎构建搜索链接
+                var searchUrl;
+                if (searchEngine === 'bing') {
+                    searchUrl = 'https://www.bing.com/search?q=' + encodeURIComponent(searchContent);
+                } else if (searchEngine === 'google') {
+                    searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(searchContent);
+                } else if (searchEngine === 'baidu') {
+                    searchUrl = 'https://www.baidu.com/s?wd=' + encodeURIComponent(searchContent);
+                } else {
+                    alert('请选择搜索引擎！');
+                    return;
+                }
+
+                // 在当前窗口中导航到搜索链接
+                window.location.href = searchUrl;
+            } else {
+                alert('请输入搜索内容！');
+            }
         }
-
-        // 在当前窗口中导航到搜索链接
-        window.location.href = searchUrl;
-    } else {
-        alert('请输入搜索内容！');
-    }
-}
-
     </script>
 </head>
 <body>
